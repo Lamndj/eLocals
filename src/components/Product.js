@@ -48,21 +48,16 @@ export default function Product() {
   const displaySpecs = useSelector(state => state.specs)
 
   useEffect(() => {
-      console.log("calling store products function...")
       fetch("http://35.225.50.138:9091/productDetail?sellerId=12&productId=9&variantId=6")
       .then(res => res.json())
       .then(data => dispatch(storeProductDetails(data)))
   }, []);
 
   useEffect(() => {
-      console.log("calling store products function...")
       fetch("http://35.225.50.138:9091/otherSellers?productId=9&variantId=6")
       .then(res => res.json())
       .then(data => dispatch(storeSellerDetails(data)))
   }, []);
-
-  console.log(productDetails)
-  console.log(sellerDetails.sellerDetails.otherSellerList)
 
   var keyFeatures
   if(productDetails.details.productDetail){
